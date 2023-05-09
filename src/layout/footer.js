@@ -3,6 +3,6 @@ import '../Assets/Styles/Layout/Footer.scss'
 
 export const Footer = () => {
   return (
-    <div className='footer'>Footer</div>
+    <div className='footer'>@copyright Footer</div>
   )
 }
