@@ -1,0 +1,12 @@
+li{
+    list-style: none;
+}
+.product-item{
+    width: 25%;
+    height: 428px;
+    &:hover{
+        background: red;
+        box-shadow: 0 20px 0 0 transparent;
+        transition: max-width .2s linear,flex .2s linear;
+    }
+}
