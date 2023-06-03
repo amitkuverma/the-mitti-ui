@@ -1,80 +1,168 @@
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import '../Assets/Styles/Layout/Header.scss'
+import React, { useState } from 'react';
+import { Menubar } from 'primereact/menubar';
+import { InputText } from 'primereact/inputtext';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
+  const [search, setSearch] = useState(true);
+  const items = [
+    {
+      label: 'File',
+      icon: 'pi pi-fw pi-file',
+      items: [
+        {
+          label: 'New',
+          icon: 'pi pi-fw pi-plus',
+          items: [
+            {
+              label: 'Bookmark',
+              icon: 'pi pi-fw pi-bookmark'
+            },
+            {
+              label: 'Video',
+              icon: 'pi pi-fw pi-video'
+            },
+
+          ]
+        },
+        {
+          label: 'Delete',
+          icon: 'pi pi-fw pi-trash'
+        },
+        {
+          separator: true
+        },
+        {
+          label: 'Export',
+          icon: 'pi pi-fw pi-external-link'
+        }
+      ]
+    },
+    {
+      label: 'Edit',
+      icon: 'pi pi-fw pi-pencil',
+      items: [
+        {
+          label: 'Left',
+          icon: 'pi pi-fw pi-align-left'
+        },
+        {
+          label: 'Right',
+          icon: 'pi pi-fw pi-align-right'
+        },
+        {
+          label: 'Center',
+          icon: 'pi pi-fw pi-align-center'
+        },
+        {
+          label: 'Justify',
+          icon: 'pi pi-fw pi-align-justify'
+        },
+
+      ]
+    },
+    {
+      label: 'Users',
+      icon: 'pi pi-fw pi-user',
+      items: [
+        {
+          label: 'New',
+          icon: 'pi pi-fw pi-user-plus',
+
+        },
+        {
+          label: 'Delete',
+          icon: 'pi pi-fw pi-user-minus',
+
+        },
+        {
+          label: 'Search',
+          icon: 'pi pi-fw pi-users',
+          items: [
+            {
+              label: 'Filter',
+              icon: 'pi pi-fw pi-filter',
+              items: [
+                {
+                  label: 'Print',
+                  icon: 'pi pi-fw pi-print'
+                }
+              ]
+            },
+            {
+              icon: 'pi pi-fw pi-bars',
+              label: 'List'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      label: 'Events',
+      icon: 'pi pi-fw pi-calendar',
+      items: [
+        {
+          label: 'Edit',
+          icon: 'pi pi-fw pi-pencil',
+          items: [
+            {
+              label: 'Save',
+              icon: 'pi pi-fw pi-calendar-plus'
+            },
+            {
+              label: 'Delete',
+              icon: 'pi pi-fw pi-calendar-minus'
+            }
+          ]
+        },
+        {
+          label: 'Archive',
+          icon: 'pi pi-fw pi-calendar-times',
+          items: [
+            {
+              label: 'Remove',
+              icon: 'pi pi-fw pi-calendar-minus'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      label: 'Quit',
+      icon: 'pi pi-fw pi-power-off'
+    }
+  ];
+
+  const start = <img alt="logo" src="https://primefaces.org/cdn/primereact/images/logo.png" height="40" className="mr-2"></img>;
+  const end = <>
+    <ul className="p-menubar-root-list" role='menubar'>
+      <li className='p-menuitem' role='none'>
+        {search ? <Link role="menuitem" className="p-menuitem-link" aria-haspopup="true" onClick={() => setSearch(!search)}>
+          <span className="pi pi-search"></span>
+        </Link> : <InputText placeholder="Search" type="text" className="w-full" onBlur={() => setSearch(!search)} />}
+      </li>
+      <li className='p-menuitem' role='none'>
+        <Link to={"/register"} role="menuitem" className="p-menuitem-link" aria-haspopup="true">
+          <i className="pi pi-user"></i>
+        </Link>
+      </li>
+      <li className='p-menuitem' role='none'>
+        <Link role="menuitem" className="p-menuitem-link" aria-haspopup="true">
+          <i className="pi pi-shopping-cart"></i>
+        </Link>
+      </li>
+      <li className='p-menuitem' role='none'>
+        <Link role="menuitem" className="p-menuitem-link" aria-haspopup="true">
+          <i className="pi pi-power-off"></i>
+        </Link>
+      </li>
+    </ul>
+  </>
+  // const end = <InputText placeholder="Search" type="text" className="w-full" />;
+
   return (
-    <Navbar bg="light" expand="lg">
-      <Container fluid>
-        <Navbar.Brand href="#">The Mitti</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link href="#action1">Home</Nav.Link>
-
-            <div className='dropdown'>
-              <Nav.Link className='inner-nav'>Mother</Nav.Link>
-              <div className='inner-nav-items'>
-                <ul>
-                  <li className='inner-dropdown'>
-                    <Nav.Link className='inner-nav'>Mother1</Nav.Link>
-                    <img className='img-fluid' src='https://www.lladro.com/media/wysiwyg/banners-menu/MD23_HERITAGE.jpg' />
-                  </li>
-                  <li className='inner-dropdown'>
-                    <Nav.Link className='inner-nav'>Gifts</Nav.Link>
-                    <img className='img-fluid' src='https://www.lladro.com/media/wysiwyg/banners-menu/MD23_GIFTS.jpg' />
-                  </li>
-                  <li className='inner-dropdown'>
-                    <Nav.Link className='inner-nav'>Mother1</Nav.Link>
-                    <img className='img-fluid' src='https://www.lladro.com/media/wysiwyg/banners-menu/MD23_HERITAGE.jpg' />
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
-          </Nav>
-          <NavDropdown title="User" id="navbarScrollingDropdown">
-            <NavDropdown.Item href="#action3">My Account</NavDropdown.Item>
-            <NavDropdown.Item href="#action4">
-              Create Account
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action5">
-              Something else here
-            </NavDropdown.Item>
-          </NavDropdown>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
+    <div className="card">
+      <Menubar model={items} start={start} end={end} />
+    </div>
+  )
 }
