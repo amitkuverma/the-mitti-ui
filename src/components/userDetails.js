@@ -12,7 +12,7 @@ export const UserDetails = () => {
         }).catch(
             console.log("No data found")
         )
-    })
+    },[])
     console.log(userDetails)
     return (
         <Table striped bordered hover>

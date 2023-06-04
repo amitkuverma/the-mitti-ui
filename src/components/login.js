@@ -1,6 +1,7 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Login = () => {
     const initialValues = {
@@ -8,6 +9,7 @@ export const Login = () => {
         password: ""
     }
     const [loginValue, setLoginValue] = useState(initialValues);
+    const navigate = useNavigate();
 
     const changeHandler = (event) => {
         setLoginValue({
@@ -18,6 +20,15 @@ export const Login = () => {
 
     const submitHandler = (event) => {
         event.preventDefault();
+        const body = {
+            email: loginValue.email,
+            password: loginValue.password
+        }
+        axios.post('https://the-mitti-api.onrender.com/login', body)
+            .then((res) => { 
+                console.log(res.data) 
+                navigate('/user-details')                
+            }).catch((err) => console.log(err))
         console.log(loginValue)
         setLoginValue(initialValues)
     }

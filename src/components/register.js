@@ -30,7 +30,7 @@ export const Register = () => {
             password: registerValue.password
         }
         axios.post('https://the-mitti-api.onrender.com/auth/register', body).then((response) => {
-            navigate("/user-details");
+            navigate("/login");
         }).catch((error) => {
             console.log(error);
         });
