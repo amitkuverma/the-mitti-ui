@@ -44,7 +44,8 @@
 // primereact/resources/themes/arya-orange/theme.css
 // primereact/resources/themes/arya-purple/theme.css
 //core
-@import "primereact/resources/primereact.min.css";                                       
+@import "primereact/resources/primereact.min.css";    
+@import "./Assets/Styles/Index.scss";                                  
         
 body {
   margin: 0;

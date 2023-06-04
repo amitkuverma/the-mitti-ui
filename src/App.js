@@ -7,22 +7,22 @@ import { NoPage } from './components/no-page';
 import { Layout } from './layout/layout';
 import { Login } from './components/login';
 import { Register } from './components/register';
+import { UserDetails } from './components/userDetails';
 import './App.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" index element={<Layout />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="*" element={<NoPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" index element={<Layout />} />
+        <Route path="blogs" element={<Blogs />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="user-details" element={<UserDetails />} />
+        <Route path="*" element={<NoPage />} />
+      </Routes>
     </div>
   );
 }
