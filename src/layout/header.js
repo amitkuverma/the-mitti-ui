@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { InputText } from 'primereact/inputtext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const [search, setSearch] = useState(true);
+  const navigate = useNavigate()
+  const logout = () =>{
+    localStorage.removeItem('token');
+    navigate("/login")
+  }
   const items = [
     {
       label: 'File',
@@ -153,7 +158,7 @@ export const Header = () => {
       </li>
       <li className='p-menuitem' role='none'>
         <Link role="menuitem" className="p-menuitem-link" aria-haspopup="true">
-          <i className="pi pi-power-off"></i>
+          <i className="pi pi-power-off" onClick={logout}></i>
         </Link>
       </li>
     </ul>

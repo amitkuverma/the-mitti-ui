@@ -27,6 +27,7 @@ export const Login = () => {
         axios.post('https://the-mitti-api.onrender.com/login', body)
             .then((res) => { 
                 console.log(res.data) 
+                localStorage.setItem('token', res.data.token);
                 navigate('/user-details')                
             }).catch((err) => console.log(err))
         console.log(loginValue)
